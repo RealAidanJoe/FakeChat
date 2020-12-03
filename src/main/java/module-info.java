@@ -4,4 +4,5 @@ module org.chat {
 
     opens org.chat to javafx.fxml;
     exports org.chat;
+    exports org.chat.controller;
 }
