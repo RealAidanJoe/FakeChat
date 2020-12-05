@@ -1,0 +1,21 @@
+.root .button {
+    -fx-background-color: transparent;
+}
+
+.root .button:hover {
+    /*-fx-background-color: #e5e5e5;*/
+    -fx-cursor: hand;
+}
+
+.control-bar {
+    -fx-background-color: #25292c;
+}
+
+.top-bar {
+    -fx-background-color: #f5f5f5;
+}
+
+.search-bar {
+    -fx-background-color: #edeae8;
+}
+
