@@ -10,16 +10,15 @@
    <children>
       <AnchorPane styleClass="control-bar" stylesheets="@../../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefWidth="60.0" style="-fx-background-color: pink;" stylesheets="@../../css/style.css">
+            <VBox alignment="TOP_CENTER" prefWidth="60.0" stylesheets="@../../css/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <ImageView fitHeight="69.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="69.0" fitWidth="52.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="69.0" fitWidth="52.0" layoutX="10.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="69.0" fitWidth="52.0" layoutX="10.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="69.0" fitWidth="52.0" layoutX="10.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/user_gray.png" />
+                     </image></ImageView>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefWidth="60.0" stylesheets="@../../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefWidth="60.0" stylesheets="@../../css/style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <Button mnemonicParsing="false">
                      <graphic>
@@ -30,14 +29,14 @@
                         </ImageView>
                      </graphic>
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets />
                      </VBox.margin>
                   </Button>
                </children>
             </VBox>
          </children>
       </AnchorPane>
-      <SplitPane dividerPositions="0.29441624365482233" layoutX="60.0" layoutY="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.3" layoutX="60.0" layoutY="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane>
                <children>
@@ -49,10 +48,14 @@
                               <TextField maxWidth="1.7976931348623157E308" prefHeight="25.0" promptText="搜索" />
                            </children>
                         </HBox>
-                        <Button layoutX="144.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="+" AnchorPane.rightAnchor="10.0" />
+                        <Button layoutX="144.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #dcd9d8;" text="+" AnchorPane.rightAnchor="10.0" />
                      </children>
                   </AnchorPane>
-                  <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" />
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                     <content>
+                        <VBox fx:id="userList" prefHeight="200.0" />
+                     </content>
+                  </ScrollPane>
                </children>
             </AnchorPane>
             <SplitPane dividerPositions="0.7" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
@@ -84,7 +87,7 @@
                                              </image></ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="138.0" layoutY="10.0" mnemonicParsing="false">
+                                    <Button layoutX="138.0" layoutY="10.0" mnemonicParsing="false" styleClass="close-btn">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -97,16 +100,16 @@
                            </children></AnchorPane>
                         <ScrollPane layoutX="21.0" layoutY="168.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" />
                      </children></AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="msg-bar">
                      <children>
-                        <TextArea layoutX="43.0" layoutY="-7.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                        <TextArea layoutX="43.0" layoutY="-7.0" prefHeight="200.0" prefWidth="200.0" styleClass="transplant" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
                         <HBox alignment="CENTER_RIGHT" prefHeight="35.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Button mnemonicParsing="false">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../img/smile.png" />
+                                          <Image url="@../../img/telephone.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -124,9 +127,27 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
+                              <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/folder-close.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="46.0" layoutY="14.0" mnemonicParsing="false">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/cut.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                            </children>
                         </HBox>
-                        <Button layoutX="460.0" layoutY="138.0" mnemonicParsing="false" text="发送" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="35.0">
+                        <Button layoutX="460.0" layoutY="138.0" mnemonicParsing="false" styleClass="send-btn" text="发送" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="35.0">
                            <font>
                               <Font size="15.0" />
                            </font>
