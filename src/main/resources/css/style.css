@@ -38,3 +38,7 @@
 .msg-bar {
     -fx-background-color: white;
 }
+
+user-bar:hover {
+    -fx-background-color: #d1d0d0;
+}

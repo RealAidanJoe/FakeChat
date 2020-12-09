@@ -51,9 +51,9 @@
                         <Button layoutX="144.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #dcd9d8;" text="+" AnchorPane.rightAnchor="10.0" />
                      </children>
                   </AnchorPane>
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                      <content>
-                        <VBox fx:id="userList" prefHeight="200.0" />
+                        <VBox fx:id="userList" />
                      </content>
                   </ScrollPane>
                </children>
@@ -98,7 +98,10 @@
                                  </children>
                               </HBox>
                            </children></AnchorPane>
-                        <ScrollPane layoutX="21.0" layoutY="168.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" />
+                        <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="21.0" layoutY="168.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0" />
+                           </content></ScrollPane>
                      </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="msg-bar">
                      <children>

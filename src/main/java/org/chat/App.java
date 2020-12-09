@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * JavaFX App
@@ -18,10 +20,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("home"));
+        scene = new Scene(loadFXML("add"));
         stage.setScene(scene);
         stage.setTitle("FakeChat");
 //        stage.initStyle(StageStyle.TRANSPARENT);
+
         stage.show();
     }
 
