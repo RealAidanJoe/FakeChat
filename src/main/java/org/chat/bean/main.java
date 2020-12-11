@@ -2,23 +2,37 @@ package org.chat.bean;
 
 import com.alibaba.fastjson.JSON;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import javafx.scene.Scene;
+import org.chat.utils.ProcessMessage;
+
 public class main {
     public static void main(String[] args) {
-//        final String[] s = new String[1];
-//        User user = new User(2077);
-//        user.registerLister(new MessageListener() {
-//            @Override
-//            public void getMessage(String singleMessage) {
-//                System.out.println(singleMessage);
-//                s[0] = singleMessage;
-//                System.out.println(s[0]);
-//            }
-//        });
-//        Friend friend = new Friend(user.getAddress(), 2077, "aidan joe");
-//        user.getMessage(); //暂时输出接收的消息
-//        friend.sendMessage("赵力锐nb");
-        Test test = new Test();
-        System.out.println(JSON.toJSONString(test));
-//        System.out.println(JSON.toJSONString(test));
+        //    初始化用户
+        User user = new User(2077);
+        //    初始化打开的朋友序号
+        int friendIndex = 0;
+        //    初始化朋友列表
+        ArrayList<Friend> friends = new ArrayList<>();
+        //    添加朋友（第一个参数为ip地址，现在为本机通讯）
+        friends.add(new Friend(ProcessMessage.getAddress(), 2077, "aidan joe"));
+
+        //    监听获得信息并自动更新
+        user.getMessage((message)->{
+            ProcessMessage.messageReceive(message,friends);
+        });
+        //    发送信息给朋友
+        friends.get(friendIndex).sendMessage("赵力锐nb");
+
+        //    获取聊天记录并遍历判断
+        ArrayList<String> getChattingRecords = friends.get(friendIndex).getChattingRecords();
+        for (String singleMessage : getChattingRecords) {
+            if (ProcessMessage.isMyMessage(singleMessage))
+                System.out.println("我发出消息：" + singleMessage);
+            else
+                System.out.println("我收到消息：" + ProcessMessage.getFriendMessage(singleMessage));
+        }
     }
 }
