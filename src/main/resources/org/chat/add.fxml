@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="350.0" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chat.controller.Add">
+   <children>
+      <VBox alignment="CENTER" layoutX="112.0" layoutY="62.0" prefHeight="290.0" prefWidth="275.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" spacing="30.0">
+               <children>
+                  <Label text="ip地址">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="115.0" spacing="30.0">
+               <children>
+                  <Label text="端口号">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="30.0">
+               <children>
+                  <Label text="备注">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="TOP_RIGHT" layoutX="252.0" layoutY="14.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="close-btn">
+                     <image>
+                        <Image url="@../../img/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children>
+      </HBox>
+      <HBox alignment="TOP_RIGHT" layoutX="440.0" layoutY="10.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <children>
+            <Button mnemonicParsing="false" text="取消" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="send-btn" text="提交" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

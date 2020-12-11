@@ -1,32 +1,28 @@
 package org.chat.controller;
 
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
+import org.chat.App;
 
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Home {
-    byte data[];
+public class Home implements Initializable {
+    public VBox userList;
 
-    public Home() {
-        byte data[] = "shabi".getBytes();
-    }
 
-    public Button send;
-
-    public void sendClicked(MouseEvent mouseEvent) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Parent node = null;
         try {
-            InetAddress address = InetAddress.getByName("192.168.0.3");
-            // 构建对方address为192.168.0.3
-            DatagramPacket SendPacket = new DatagramPacket(data, data.length, address, 2013);
-            //构建待发送UDP数据包
-            DatagramSocket Post = new DatagramSocket();
-            //创建UDP发送对象
-            Post.send(SendPacket);              //发送数据包
-        } catch (Exception e1) {
+            node = App.loadFXML("friend");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
+        userList.getChildren().add(node);
     }
 }
