@@ -5,6 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class Friend {
     //    朋友备注信息
@@ -13,6 +14,8 @@ public class Friend {
     private int portNumber;
     //    ip地址
     private InetAddress inetAddress;
+    //    聊天记录
+    ArrayList<String> chattingRecords;
 
 
     //    构造函数
@@ -35,4 +38,14 @@ public class Friend {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public String toString() {
+        return "Friend{" +
+                "friendName='" + friendName + '\'' +
+                ", portNumber=" + portNumber +
+                ", inetAddress=" + inetAddress +
+                '}';
+    }
+
 }

@@ -1,9 +1,8 @@
 package org.chat.bean;
 
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
+import java.net.*;
+
+import static java.lang.Thread.sleep;
 
 public class User {
     //    端口号
@@ -12,6 +11,8 @@ public class User {
     private DatagramSocket socket;
     //    数据块
     byte data[] = new byte[1024];
+    //    监听
+    private MessageListener messageListener;
 
 
     public User(int portNumber) {
@@ -23,6 +24,7 @@ public class User {
         }
     }
 
+    //    获取自己的端口号
     public String getAddress() {
         try {
             InetAddress addr = InetAddress.getLocalHost();
@@ -34,12 +36,25 @@ public class User {
     }
 
     public void getMessage() {
-        Thread t=new Thread(()->{
-            while (true){
-                System.out.println("hello");
+        Thread t = new Thread(() -> {
+            try {
+                DatagramPacket pack = new DatagramPacket(data, data.length);
+                while (true) {
+                    socket.receive(pack);
+                    String singleMessage = new String(pack.getData(), 0, pack.getLength());
+                    System.out.println(singleMessage);
+                    messageListener.getMessage(singleMessage);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
         t.start();
+    }
+
+    //注册监听器，该类没有监听器对象啊，那么就传递进来吧。
+    public void registerLister(MessageListener messageListener) {
+        this.messageListener = messageListener;
     }
 
 }
