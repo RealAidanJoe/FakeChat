@@ -42,3 +42,7 @@
 user-bar:hover {
     -fx-background-color: #d1d0d0;
 }
+
+.friend-info:hover {
+    -fx-background-color: #d6d4d3;
+}
