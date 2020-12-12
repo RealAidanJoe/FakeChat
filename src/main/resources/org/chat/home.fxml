@@ -51,11 +51,7 @@
                         <Button layoutX="144.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #dcd9d8;" text="+" AnchorPane.rightAnchor="10.0" />
                      </children>
                   </AnchorPane>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
-                     <content>
-                        <VBox fx:id="friendList" />
-                     </content>
-                  </ScrollPane>
+                  <ListView fx:id="friendListView" fixedCellSize="65.0" focusTraversable="false" layoutX="17.0" layoutY="204.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" />
                </children>
             </AnchorPane>
             <SplitPane dividerPositions="0.7" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
@@ -64,7 +60,7 @@
                      <children>
                         <AnchorPane prefHeight="60.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label layoutX="38.0" layoutY="22.0" text="安大微教务" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
+                              <Label fx:id="friendNameLab" layoutX="38.0" layoutY="22.0" text="安大微教务" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>

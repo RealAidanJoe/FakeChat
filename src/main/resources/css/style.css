@@ -1,7 +1,7 @@
-.transplant {
-    -fx-background-color: transparent;
-}
-
+.transplant,
+.list-view,
+.list-cell,
+.list-cell:empty:hover,
 .button {
     -fx-background-color: transparent;
 }
@@ -43,6 +43,16 @@ user-bar:hover {
     -fx-background-color: #d1d0d0;
 }
 
-.friend-info:hover {
+/*.friend-info:hover {*/
+/*    -fx-background-color: #d6d4d3;*/
+/*}*/
+
+.list-cell:hover {
     -fx-background-color: #d6d4d3;
 }
+
+.list-cell:selected {
+    -fx-background-color: #cac8c6;
+}
+
+

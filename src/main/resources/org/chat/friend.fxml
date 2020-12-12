@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root onMouseClicked="#chooseFriend" prefHeight="65.0" styleClass="friend-info" stylesheets="@../../css/style.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="65.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <VBox alignment="CENTER" layoutX="12.5" layoutY="12.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.5" AnchorPane.topAnchor="0.0">
             <children>
@@ -19,14 +19,14 @@
         </VBox>
         <VBox alignment="CENTER_LEFT" layoutX="65.0" layoutY="12.5" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label fx:id="friendNameLab" text="安大微教务aaaaaaa">
+                <Label fx:id="nameLab" text="安大微教务">
                     <font>
                         <Font size="17.0" />
                     </font>
                 </Label>
-                <Label text="学校通知" textFill="GREY" />
+                <Label fx:id="chatLab" text="学校通知" textFill="GREY" />
             </children>
         </VBox>
         <Circle fx:id="hasNewMsgCir" fill="RED" layoutX="225.0" layoutY="13.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
     </children>
-</fx:root>
+</AnchorPane>
