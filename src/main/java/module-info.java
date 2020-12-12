@@ -8,4 +8,5 @@ module org.chat {
     exports org.chat;
     exports org.chat.controller;
     exports org.chat.bean;
+    exports org.chat.utils;
 }

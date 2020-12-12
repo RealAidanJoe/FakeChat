@@ -6,7 +6,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
-public class ProcessMessage {
+public class MessageProcessing {
     private static final String COMBINE_SYMBOL = "!@#%&";
     public static final int NOT_ON_LIST = -1;
 

@@ -6,13 +6,13 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
-import org.chat.utils.ProcessMessage;
+import org.chat.utils.MessageProcessing;
 
 public class Friend {
     //    朋友备注信息
     public String friendName;
     //    端口号
-    public int portNumber;
+    private int portNumber;
     //    ip地址
     public String address;
     //    聊天记录
@@ -20,9 +20,9 @@ public class Friend {
 
 
     //    构造函数
-    public Friend(String address, int portNumber, String friendName) {
+    public Friend(String address, String friendName) {
         this.address = address;
-        this.portNumber = portNumber;
+        this.portNumber = Constant.PORT_NUMBER;
         this.friendName = friendName;
         chattingRecords = new ArrayList<>();
     }
@@ -33,7 +33,7 @@ public class Friend {
             //    自己发给朋友的消息加入消息记录
             addChattingRecords(singleMessage);
             //    合并包括自己ip地址的信息
-            singleMessage = ProcessMessage.messageCombine(singleMessage);
+            singleMessage = MessageProcessing.messageCombine(singleMessage);
             DatagramPacket sendPacket = new DatagramPacket(singleMessage.getBytes(), singleMessage.getBytes().length, InetAddress.getByName(address), portNumber);
             new DatagramSocket().send(sendPacket);
         } catch (IOException e) {
@@ -56,7 +56,7 @@ public class Friend {
                 '}';
     }
 
-    public ArrayList<String> getChattingRecords() {
+    public ArrayList<String> exportChattingRecords() {
         return chattingRecords;
     }
 }
