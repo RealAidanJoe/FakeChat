@@ -35,6 +35,7 @@ public class User {
                 e.printStackTrace();
             }
         });
+        t.setDaemon(true);
         t.start();
     }
 

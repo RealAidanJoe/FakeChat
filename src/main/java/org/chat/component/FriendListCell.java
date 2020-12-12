@@ -13,10 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FriendListCell extends ListCell<Friend> {
-    @FXML
-    private Label friendNameLab;
-    @FXML
-    private Circle hasNewMsgCir;
 
     @Override
     protected void updateItem(Friend friend, boolean b) {
@@ -24,20 +20,20 @@ public class FriendListCell extends ListCell<Friend> {
         if (!b) {
             AnchorPane pane = null;
             try {
-                pane = (AnchorPane) App.loadFXML("friend");
+                pane = new AnchorPane(App.loadFXML("friend"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Circle cir = (Circle) pane.lookup("#hasNewMsgCir");
+//            Circle cir = (Circle) pane.lookup("#hasNewMsgCir");
             Label nameLab = (Label) pane.lookup("#nameLab");
-            Label chatLab = (Label) pane.lookup("#chatLab");
+//            Label chatLab = (Label) pane.lookup("#chatLab");
             nameLab.setText(friend.friendName);
-            ArrayList<String> chattingRecords = friend.getChattingRecords();
-            if (chattingRecords.size() != 0) {
-                chatLab.setText(chattingRecords.get(chattingRecords.size() - 1));
-            }
-//            cir.setVisible(true);
-//            System.out.println(cir);
+//            ArrayList<String> chattingRecords = friend.getChattingRecords();
+//            if (chattingRecords.size() != 0) {
+//                chatLab.setText(chattingRecords.get(chattingRecords.size() - 1));
+//            } else {
+//                chatLab.setText("");
+//            }
             setGraphic(pane);
         }
     }

@@ -23,8 +23,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("home"));
         stage.setScene(scene);
         stage.setTitle("FakeChat");
-//        stage.initStyle(StageStyle.TRANSPARENT);
-
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
     }
 

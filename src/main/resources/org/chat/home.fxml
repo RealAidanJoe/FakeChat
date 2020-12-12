@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="590.0" prefWidth="850.0" styleClass="root" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chat.controller.HomeController">
    <children>
-      <AnchorPane styleClass="control-bar" stylesheets="@../../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane onMouseDragged="#dragWin" onMousePressed="#pressWin" styleClass="control-bar" stylesheets="@../../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="TOP_CENTER" prefWidth="60.0" stylesheets="@../../css/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                <children>
@@ -20,7 +20,7 @@
             </VBox>
             <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefWidth="60.0" stylesheets="@../../css/style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button mnemonicParsing="false" onAction="#openSetting">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -54,11 +54,11 @@
                   <ListView fx:id="friendListView" fixedCellSize="65.0" focusTraversable="false" layoutX="17.0" layoutY="204.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" />
                </children>
             </AnchorPane>
-            <SplitPane dividerPositions="0.7" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+            <SplitPane dividerPositions="0.75" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0">
                      <children>
-                        <AnchorPane prefHeight="60.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane onMouseDragged="#dragWin" onMousePressed="#pressWin" prefHeight="60.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Label fx:id="friendNameLab" layoutX="38.0" layoutY="22.0" text="安大微教务" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
                                  <font>
@@ -67,7 +67,7 @@
                               </Label>
                               <HBox alignment="TOP_RIGHT" layoutX="277.0" layoutY="-25.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button mnemonicParsing="false">
+                                    <Button mnemonicParsing="false" onAction="#minWin">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -75,7 +75,7 @@
                                              </image></ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="174.0" layoutY="10.0" mnemonicParsing="false">
+                                    <Button layoutX="174.0" layoutY="10.0" mnemonicParsing="false" onAction="#maxWin">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -83,7 +83,7 @@
                                              </image></ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="138.0" layoutY="10.0" mnemonicParsing="false" styleClass="close-btn">
+                                    <Button layoutX="138.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeWin" styleClass="close-btn">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -94,14 +94,46 @@
                                  </children>
                               </HBox>
                            </children></AnchorPane>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="21.0" layoutY="168.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                        <ScrollPane fitToHeight="true" fitToWidth="true" focusTraversable="false" layoutX="21.0" layoutY="168.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                            <content>
-                              <VBox prefHeight="200.0" prefWidth="100.0" />
+                              <VBox fx:id="chartList" alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="3.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="547.0">
+                                       <children>
+                                          <Label style="-fx-background-color: white; -fx-background-radius: 5;" text="Label">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" layoutX="20.0" layoutY="345.0" prefHeight="30.0" prefWidth="547.0">
+                                       <children>
+                                          <Label style="-fx-background-color: #9eea6a; -fx-background-radius: 5;" text="Label">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" />
+                                 </padding></VBox>
                            </content></ScrollPane>
                      </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="msg-bar">
                      <children>
-                        <TextArea layoutX="43.0" layoutY="-7.0" prefHeight="200.0" prefWidth="200.0" styleClass="transplant" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                        <TextArea fx:id="msgText" disable="true" layoutX="43.0" layoutY="-7.0" prefHeight="200.0" prefWidth="200.0" styleClass="transplant" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font></TextArea>
                         <HBox alignment="CENTER_RIGHT" prefHeight="35.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Button mnemonicParsing="false">
@@ -146,7 +178,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <Button layoutX="460.0" layoutY="138.0" mnemonicParsing="false" styleClass="send-btn" text="发送" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="35.0">
+                        <Button fx:id="sendBtn" disable="true" layoutX="460.0" layoutY="138.0" mnemonicParsing="false" onAction="#sendMsg" styleClass="send-btn" text="发送" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="35.0">
                            <font>
                               <Font size="15.0" />
                            </font>
