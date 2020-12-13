@@ -6,7 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import org.chat.App;
-import org.chat.utils.ProcessMessage;
+import org.chat.utils.MessageProcessing;
 
 import java.io.IOException;
 
@@ -26,12 +26,12 @@ public class Bubble extends HBox {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        if (ProcessMessage.isMyMessage(msg)) {
+        if (MessageProcessing.isMyMessage(msg)) {
             msgLab.setText(msg);
             msgLab.setStyle("-fx-background-color: #9eea6a");
             aliBox.setAlignment(Pos.CENTER_RIGHT);
         } else {
-            msgLab.setText(ProcessMessage.getFriendMessage(msg));
+            msgLab.setText(MessageProcessing.getFriendMessage(msg));
             msgLab.setStyle("-fx-background-color: white");
             aliBox.setAlignment(Pos.CENTER_LEFT);
         }

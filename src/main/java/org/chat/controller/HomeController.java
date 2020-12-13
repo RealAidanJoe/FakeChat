@@ -22,10 +22,11 @@ import org.chat.bean.Friend;
 import org.chat.bean.User;
 import org.chat.component.Bubble;
 import org.chat.component.FriendListCell;
-import org.chat.utils.ProcessMessage;
+import org.chat.utils.MessageProcessing;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -41,14 +42,15 @@ public class HomeController implements Initializable {
     @FXML
     private ListView<Friend> friendListView;
     ObservableList<Friend> friendList = FXCollections.observableArrayList();
+    private int selectedIndex;
     private Friend selectedFriend;
     User user;
 
     public HomeController() {
-        user = new User(2077);
-        friendList.add(new Friend(ProcessMessage.getAddress(), 2077, "aidan joe"));
-        friendList.add(new Friend("172.21.14.201", 2077, "snake"));
-//        friendList.add(new Friend(ProcessMessage.getAddress(), 2077, "snake"));
+        user = new User();
+        friendList.add(new Friend(MessageProcessing.getAddress(), "aidan joe"));
+        friendList.add(new Friend("172.21.14.200", "snake"));
+        friendList.add(new Friend(MessageProcessing.getAddress(), "ant"));
     }
 
     @Override
@@ -56,28 +58,51 @@ public class HomeController implements Initializable {
         friendListView.setCellFactory((ListView<Friend> l) -> new FriendListCell());
         friendListView.setItems(friendList);
 
-        user.getMessage((msg) -> {
+        user.listenMessage((msg) -> {
+//            // TODO: 2020/12/13 list参数
+            int sendIndex = MessageProcessing.messageReceive(msg, new ArrayList<>(friendList));
+//            System.out.println(sendIndex);
 //            System.out.println(msg);
-            Platform.runLater(() -> {
-                chartList.getChildren().add(new Bubble(msg));
-            });
+//            selectedFriend.addChattingRecords(msg);
+//            未知好友发送消息
+            if (sendIndex == MessageProcessing.NOT_ON_LIST) {
+                System.out.println("未知");
+
+            } else if (sendIndex == selectedIndex) {  //  当前正在聊天好友
+                Platform.runLater(() -> {
+                    chartList.getChildren().add(new Bubble(msg));
+                });
+            }
+//            else { // 其他好友
+//
+//            }
+//            强制刷新list
+            friendListView.setItems(null);
+            friendListView.setItems(friendList);
         });
 
-//        切换好友
-        friendListView.getSelectionModel().selectedItemProperty().addListener((ov, oldVal, newVal) -> {
-//            System.out.println(newVal);
-            selectedFriend = newVal;
+//        监听切换好友
+        friendListView.getSelectionModel().selectedIndexProperty().addListener((ov, oldVal, newVal) -> {
+//            System.out.println(newVal.intValue());
+            selectedIndex = newVal.intValue();
+//            避免刷新时出错
+            if (selectedIndex != -1) {
+                selectedFriend = friendList.get(selectedIndex);
+
 //            更改显示好友名
-            friendNameLab.setText(newVal.friendName);
+                friendNameLab.setText(selectedFriend.friendName);
 //            可以发送消息
-            msgText.setDisable(false);
-            sendBtn.setDisable(false);
+                msgText.setDisable(false);
+                sendBtn.setDisable(false);
 //            显示聊天记录
-            chartList.getChildren().clear();
-            for (String msg : newVal.getChattingRecords()) {
-                chartList.getChildren().add(new Bubble(msg));
+                chartList.getChildren().clear();
+                for (String msg : selectedFriend.exportChattingRecords()) {
+                    chartList.getChildren().add(new Bubble(msg));
+                }
             }
         });
+
+        friendListView.getSelectionModel().select(0);
     }
 
     @FXML

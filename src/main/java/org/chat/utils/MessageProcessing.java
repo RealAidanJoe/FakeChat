@@ -1,5 +1,6 @@
 package org.chat.utils;
 
+import javafx.collections.ObservableList;
 import org.chat.bean.Friend;
 
 import java.net.InetAddress;
