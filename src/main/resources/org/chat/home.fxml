@@ -48,7 +48,7 @@
                               <TextField maxWidth="1.7976931348623157E308" prefHeight="25.0" promptText="搜索" />
                            </children>
                         </HBox>
-                        <Button layoutX="144.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #dcd9d8;" text="+" AnchorPane.rightAnchor="10.0" />
+                        <Button layoutX="144.0" layoutY="18.0" mnemonicParsing="false" onAction="#addFriend" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #dcd9d8;" text="+" AnchorPane.rightAnchor="10.0" />
                      </children>
                   </AnchorPane>
                   <ListView fx:id="friendListView" fixedCellSize="65.0" focusTraversable="false" layoutX="17.0" layoutY="204.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" />

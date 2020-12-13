@@ -24,9 +24,9 @@
                         <Font size="17.0" />
                     </font>
                 </Label>
-                <Label fx:id="chatLab" text="学校通知" textFill="GREY" />
+                <Label fx:id="chatLab" textFill="GREY" />
             </children>
         </VBox>
-        <Circle fx:id="hasNewMsgCir" fill="RED" layoutX="225.0" layoutY="13.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+        <Circle fx:id="hasNewMsgCir" fill="RED" layoutX="225.0" layoutY="13.0" radius="3.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
     </children>
 </AnchorPane>

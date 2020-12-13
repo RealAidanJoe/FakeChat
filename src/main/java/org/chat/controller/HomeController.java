@@ -77,8 +77,8 @@ public class HomeController implements Initializable {
 //
 //            }
 //            强制刷新list
-            friendListView.setItems(null);
-            friendListView.setItems(friendList);
+//            friendListView.setItems(null);
+//            friendListView.setItems(friendList);
         });
 
 //        监听切换好友
@@ -107,6 +107,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private void sendMsg(Event event) {
+//        System.out.println(event.getSource());
         String msg = msgText.getText();
 //        能输入证明已选择好友
         if (!Objects.equals(msg, "")) {
@@ -116,6 +117,11 @@ public class HomeController implements Initializable {
             selectedFriend.sendMessage(msg);
             msgText.setText("");
         }
+    }
+
+    @FXML
+    private void addFriend(){
+
     }
 
     @FXML

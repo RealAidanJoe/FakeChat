@@ -2,6 +2,7 @@ package org.chat.bean;
 
 import java.util.ArrayList;
 
+import javafx.collections.ObservableList;
 import org.chat.utils.ImportExportProcessing;
 import org.chat.utils.MessageProcessing;
 
@@ -29,12 +30,14 @@ public class main {
 
         System.out.println(friends.get(friendIndex).exportChattingRecords());
         //    获取聊天记录并遍历判断
-        ArrayList<String> getChattingRecords = friends.get(friendIndex).exportChattingRecords();
+        ObservableList<String> getChattingRecords = friends.get(friendIndex).exportChattingRecords();
+
         for (int i = 0; i < getChattingRecords.size(); i++) {
-            if (MessageProcessing.isMyMessage(getChattingRecords.get(i)))
-                System.out.println("我发出消息：" + getChattingRecords.get(i));
+            String getChattingRecord = getChattingRecords.get(i);
+            if (MessageProcessing.isMyMessage(getChattingRecord))
+                System.out.println("我发出消息：" + getChattingRecord);
             else
-                System.out.println("我收到消息：" + MessageProcessing.getFriendMessage(getChattingRecords.get(i)));
+                System.out.println("我收到消息：" + MessageProcessing.getFriendMessage(getChattingRecord));
         }
     }
 }

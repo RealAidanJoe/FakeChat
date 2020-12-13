@@ -6,6 +6,9 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import org.chat.utils.MessageProcessing;
 
 public class Friend {
@@ -16,7 +19,7 @@ public class Friend {
     //    ip地址
     public String address;
     //    聊天记录
-    private final ArrayList<String> chattingRecords;
+    private final ObservableList<String> chattingRecords;
 
 
     //    构造函数
@@ -24,7 +27,7 @@ public class Friend {
         this.address = address;
         this.portNumber = Constant.PORT_NUMBER;
         this.friendName = friendName;
-        chattingRecords = new ArrayList<>();
+        chattingRecords = FXCollections.observableArrayList();
     }
 
     //    发单条消息
@@ -56,7 +59,7 @@ public class Friend {
                 '}';
     }
 
-    public ArrayList<String> exportChattingRecords() {
+    public ObservableList<String> exportChattingRecords() {
         return chattingRecords;
     }
 }
