@@ -13,8 +13,8 @@ public class User {
     byte data[] = new byte[1024];
 
 
-    public User(int portNumber) {
-        this.portNumber = portNumber;
+    public User() {
+        this.portNumber = Constant.PORT_NUMBER;
         try {
             socket = new DatagramSocket(portNumber);
         } catch (SocketException e) {
@@ -22,7 +22,7 @@ public class User {
         }
     }
 
-    public void getMessage(MessageListener messageListener) {
+    public void listenMessage(MessageListener messageListener) {
         Thread t = new Thread(() -> {
             try {
                 DatagramPacket pack = new DatagramPacket(data, data.length);
