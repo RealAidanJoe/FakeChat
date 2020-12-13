@@ -41,13 +41,13 @@ public class FriendListCell extends ListCell<Friend> {
             nameLab = (Label) pane.lookup("#nameLab");
             nameLab.setText(friend.friendName);
             chatLab = (Label) pane.lookup("#chatLab");
-            setOnMouseClicked((event) -> {
-                cir.setVisible(false);
-            });
+//            System.out.println(getOnMouseClicked());
+            setOnMouseClicked((event) -> cir.setVisible(false));
 
             ObservableList<String> chattingRecords = friend.exportChattingRecords();
 
 //            聊天记录改变代表有新消息
+
             chattingRecords.addListener((ListChangeListener<? super String>) change -> {
 
                 String s;
@@ -58,9 +58,7 @@ public class FriendListCell extends ListCell<Friend> {
                     cir.setVisible(true);
                     s = MessageProcessing.getFriendMessage(msg);
                 }
-                Platform.runLater(() -> {
-                    chatLab.setText(s);
-                });
+                Platform.runLater(() -> chatLab.setText(s));
             });
 
             setGraphic(pane);

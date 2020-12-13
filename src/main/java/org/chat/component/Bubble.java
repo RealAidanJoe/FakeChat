@@ -26,6 +26,7 @@ public class Bubble extends HBox {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        // TODO: 2020/12/13 区分文件 
         if (MessageProcessing.isMyMessage(msg)) {
             msgLab.setText(msg);
             msgLab.setStyle("-fx-background-color: #9eea6a");

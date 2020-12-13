@@ -13,8 +13,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.chat.App;
@@ -24,6 +27,7 @@ import org.chat.component.Bubble;
 import org.chat.component.FriendListCell;
 import org.chat.utils.MessageProcessing;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -46,11 +50,21 @@ public class HomeController implements Initializable {
     private Friend selectedFriend;
     User user;
 
+    FileChooser chooser;
+
     public HomeController() {
         user = new User();
         friendList.add(new Friend(MessageProcessing.getAddress(), "aidan joe"));
         friendList.add(new Friend("172.21.14.200", "snake"));
         friendList.add(new Friend(MessageProcessing.getAddress(), "ant"));
+
+        chooser = new FileChooser();
+        chooser.setTitle("发送文件");
+        chooser.setInitialDirectory(new File("C:/")); // 初始目录
+        // 文件类型过滤器
+//        chooser.getExtensionFilters().add(
+//                new FileChooser.ExtensionFilter("所有音乐", "*.wav", "*.mp3"));
+
     }
 
     @Override
@@ -59,7 +73,6 @@ public class HomeController implements Initializable {
         friendListView.setItems(friendList);
 
         user.listenMessage((msg) -> {
-//            // TODO: 2020/12/13 list参数
             int sendIndex = MessageProcessing.messageReceive(msg, new ArrayList<>(friendList));
 //            System.out.println(sendIndex);
 //            System.out.println(msg);
@@ -69,16 +82,11 @@ public class HomeController implements Initializable {
                 System.out.println("未知");
 
             } else if (sendIndex == selectedIndex) {  //  当前正在聊天好友
-                Platform.runLater(() -> {
-                    chartList.getChildren().add(new Bubble(msg));
-                });
+                Platform.runLater(() -> chartList.getChildren().add(new Bubble(msg)));
             }
 //            else { // 其他好友
 //
 //            }
-//            强制刷新list
-//            friendListView.setItems(null);
-//            friendListView.setItems(friendList);
         });
 
 //        监听切换好友
@@ -86,19 +94,17 @@ public class HomeController implements Initializable {
 //            System.out.println(newVal.intValue());
             selectedIndex = newVal.intValue();
 //            避免刷新时出错
-            if (selectedIndex != -1) {
-                selectedFriend = friendList.get(selectedIndex);
+            selectedFriend = friendList.get(selectedIndex);
 
 //            更改显示好友名
-                friendNameLab.setText(selectedFriend.friendName);
+            friendNameLab.setText(selectedFriend.friendName);
 //            可以发送消息
-                msgText.setDisable(false);
-                sendBtn.setDisable(false);
+            msgText.setDisable(false);
+            sendBtn.setDisable(false);
 //            显示聊天记录
-                chartList.getChildren().clear();
-                for (String msg : selectedFriend.exportChattingRecords()) {
-                    chartList.getChildren().add(new Bubble(msg));
-                }
+            chartList.getChildren().clear();
+            for (String msg : selectedFriend.exportChattingRecords()) {
+                chartList.getChildren().add(new Bubble(msg));
             }
         });
 
@@ -106,7 +112,7 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void sendMsg(Event event) {
+    private void sendMsg() {
 //        System.out.println(event.getSource());
         String msg = msgText.getText();
 //        能输入证明已选择好友
@@ -120,7 +126,7 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void addFriend(){
+    private void addFriend() {
 
     }
 
@@ -179,6 +185,24 @@ public class HomeController implements Initializable {
             stage.setY(0);
         } else {
             stage.setY(mouseEvent.getScreenY() - yOffset);
+        }
+    }
+
+    @FXML
+    private void inputMsg(KeyEvent keyEvent) {
+//        System.out.println("get:" + keyEvent.getCode());
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+//            System.out.println("enter");
+            sendMsg();
+        }
+    }
+
+    @FXML
+    private void sendFile(ActionEvent event) {
+        File file = chooser.showOpenDialog(new Stage());
+        if (file != null) {
+            // TODO: 2020/12/13 发送文件
+            System.out.println(file.getAbsolutePath());
         }
     }
 }
