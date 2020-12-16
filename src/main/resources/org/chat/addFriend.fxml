@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="350.0" style="-fx-border-color: black; -fx-border-width: 1;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chat.controller.AddFriendController">
+   <children>
+      <VBox alignment="CENTER" layoutX="112.0" layoutY="62.0" prefHeight="290.0" prefWidth="275.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" spacing="30.0">
+               <children>
+                  <Label text="备注名">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="friendNameTex" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" spacing="30.0">
+               <children>
+                  <Label text="ip地址">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="ipTex" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="115.0" spacing="30.0">
+               <children>
+                  <Label text="消息端口号">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="msgPortTex" text="2077" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="98.0" spacing="30.0">
+               <children>
+                  <Label text="文件端口号">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="filePortTex" text="2088" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="5.0" onMouseDragged="#dragWin" onMousePressed="#pressWin" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="TOP_RIGHT" layoutX="309.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#closeWin" styleClass="close-btn">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="close-btn">
+                           <image>
+                              <Image url="@../../img/close.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <Label layoutY="5.0" text="添加好友" textFill="GREY" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+         </children>
+      </AnchorPane>
+      <HBox alignment="TOP_RIGHT" layoutX="440.0" layoutY="10.0" spacing="10.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#closeWin" text="取消" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#submit" styleClass="send-btn" text="确定" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

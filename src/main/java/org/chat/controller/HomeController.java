@@ -53,10 +53,10 @@ public class HomeController implements Initializable {
     FileChooser chooser;
 
     public HomeController() {
-        user = new User();
-        friendList.add(new Friend(MessageProcessing.getAddress(), "aidan joe"));
-        friendList.add(new Friend("172.21.14.200", "snake"));
-        friendList.add(new Friend(MessageProcessing.getAddress(), "ant"));
+        user = new User(2077, 2088, new File("c:/"));
+        friendList.add(new Friend("AidanJoe", 2077, 2088, MessageProcessing.getAddress()));
+        friendList.add(new Friend("snake", 2077, 2088, "172.21.14.200"));
+        friendList.add(new Friend("ant", 2077, 2088, MessageProcessing.getAddress()));
 
         chooser = new FileChooser();
         chooser.setTitle("发送文件");
@@ -125,35 +125,45 @@ public class HomeController implements Initializable {
         }
     }
 
-    @FXML
-    private void addFriend() {
+    private final Stage secStage = new Stage(StageStyle.TRANSPARENT);
 
+    @FXML
+    private void openAddFriend() {
+        try {
+            Scene setting = new Scene(App.loadFXML("addFriend"));
+            secStage.setScene(setting);
+            secStage.setTitle("添加好友");
+            secStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void openSetting() {
         try {
             Scene setting = new Scene(App.loadFXML("setting"));
-            Stage stage = new Stage(StageStyle.TRANSPARENT);
-            stage.setScene(setting);
-            stage.show();
+            secStage.setScene(setting);
+            secStage.setTitle("设置");
+            secStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private Stage stage;
+    private Stage rootStage;
 
     private Stage getStageByEvent(Event event) {
-        if (stage == null) {
+        if (rootStage == null) {
             Parent parent = (Parent) event.getSource();
-            stage = (Stage) parent.getScene().getWindow();
+            rootStage = (Stage) parent.getScene().getWindow();
         }
-        return stage;
+        return rootStage;
     }
 
     @FXML
     private void closeWin(ActionEvent event) {
+        Platform.exit();
         getStageByEvent(event).close();
     }
 

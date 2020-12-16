@@ -3,29 +3,21 @@ package org.chat.controller;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class SettingController {
-    @FXML
-    private TextField pathTex;
+public class AddFriendController implements Initializable {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+    }
 
     private Stage stage;
-    DirectoryChooser chooser;
-
-    public SettingController() {
-        chooser = new DirectoryChooser();
-        chooser.setTitle("保存文件夹");
-        chooser.setInitialDirectory(new File("C:/")); // 初始目录
-    }
 
     private Stage getStageByEvent(Event event) {
         if (stage == null) {
@@ -38,11 +30,6 @@ public class SettingController {
     @FXML
     private void closeWin(ActionEvent event) {
         getStageByEvent(event).close();
-    }
-
-    @FXML
-    private void minWin(ActionEvent event) {
-        getStageByEvent(event).setIconified(true);
     }
 
     private double xOffset;
@@ -66,7 +53,7 @@ public class SettingController {
     }
 
     @FXML
-    private void chooseFolder(ActionEvent event) {
+    private void submit(){
 
     }
 }
