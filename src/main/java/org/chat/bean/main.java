@@ -1,5 +1,8 @@
 package org.chat.bean;
 
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import org.chat.utils.ImportExportProcessing;
@@ -8,13 +11,13 @@ import org.chat.utils.MessageProcessing;
 public class main {
     public static void main(String[] args) {
         //    初始化用户
-        User user = new User();
+        User user = null;
         //    初始化打开的朋友序号
         int friendIndex = 0;
         //    初始化朋友列表
         ArrayList<Friend> friends = new ArrayList<>();
         //    添加朋友（第一个参数为ip地址，现在为本机通讯）
-        friends.add(new Friend(MessageProcessing.getAddress(), "aidan joe"));
+        friends.add(new Friend("AidanJoe", 2077, 2088, MessageProcessing.getAddress()));
 
         //    监听获得信息并自动更新
         user.listenMessage((message) -> {
@@ -36,5 +39,6 @@ public class main {
             else
                 System.out.println("我收到消息：" + MessageProcessing.getFriendMessage(getChattingRecords.get(i)));
         }
+
     }
 }
