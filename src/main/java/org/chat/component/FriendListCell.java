@@ -55,7 +55,9 @@ public class FriendListCell extends ListCell<Friend> {
                 if (MessageProcessing.isMyMessage(msg)) {
                     s = msg;
                 } else {
-                    cir.setVisible(true);
+                    if (!isSelected()) {
+                        cir.setVisible(true);
+                    }
                     s = MessageProcessing.getFriendMessage(msg);
                 }
                 Platform.runLater(() -> chatLab.setText(s));
