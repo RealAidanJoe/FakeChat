@@ -37,7 +37,7 @@ public class ImportExportProcessing {
             File file = new File(Constant.SAVE_FRIENDS_PATH);
             //如果没有文件就创建
             if (!file.isFile()) {
-                return null;
+                return new ArrayList<Friend>();
             }
             ArrayList<Friend> friends = new ArrayList<>();
             //BufferedReader是可以按行读取文件
@@ -56,8 +56,8 @@ public class ImportExportProcessing {
             return friends;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     public static void exportUser(User user) {
@@ -78,11 +78,15 @@ public class ImportExportProcessing {
 
     public static User importUser() {
         try {
-
             File file = new File(Constant.SAVE_USER_PATH);
             //如果没有文件就创建
             if (!file.isFile()) {
-                return null;
+                File saveFile = new File("saveFile");
+                //如果没有文件就创建
+                if (!saveFile.exists()) {
+                    saveFile.mkdir();
+                }
+                return new User(2077, 2088, saveFile);
             }
             ArrayList<Friend> friends = new ArrayList<>();
             User user = null;
@@ -94,7 +98,7 @@ public class ImportExportProcessing {
 
             String str = null;
             while ((str = bufferedReader.readLine()) != null) {
-                user=JSON.parseObject(str,User.class);
+                user = JSON.parseObject(str, User.class);
             }
             //close
             inputStream.close();
@@ -102,8 +106,8 @@ public class ImportExportProcessing {
             return user;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
 
