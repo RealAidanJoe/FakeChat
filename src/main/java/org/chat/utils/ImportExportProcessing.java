@@ -57,8 +57,8 @@ public class ImportExportProcessing {
             return friends;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return new ArrayList<>();
     }
 
     public static void exportUser(User user) {
@@ -79,11 +79,15 @@ public class ImportExportProcessing {
 
     public static User importUser() {
         try {
-
             File file = new File(Constant.SAVE_USER_PATH);
             //如果没有文件就创建
             if (!file.isFile()) {
-                return null;
+                File saveFile = new File("saveFile");
+                //如果没有文件就创建
+                if (!saveFile.exists()) {
+                    saveFile.mkdir();
+                }
+                return new User(2077, 2088, saveFile);
             }
             ArrayList<Friend> friends = new ArrayList<>();
             User user = null;
@@ -103,8 +107,8 @@ public class ImportExportProcessing {
             return user;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
 

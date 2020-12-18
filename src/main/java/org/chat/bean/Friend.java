@@ -53,6 +53,7 @@ public class Friend {
     public void sendFile(File file) {
         FileInputStream fileInputStream = null;
         try {//读取文件
+            sendMessage("发送文件:" + file.getName());
             fileInputStream = new FileInputStream(file);
             byte[] byteFile = new byte[(int) file.length()];
             fileInputStream.read(byteFile);
