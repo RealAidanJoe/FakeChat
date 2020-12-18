@@ -1,4 +1,0 @@
-{"address":"172.21.6.131","chatPortNumber":2077,"filePortNumber":2088,"friendName":"AidanJoe"}
-{"address":"172.21.14.200","chatPortNumber":2077,"filePortNumber":2088,"friendName":"snake"}
-{"address":"172.21.6.131","chatPortNumber":2077,"filePortNumber":2088,"friendName":"ant"}
-{"address":"123.123.123.123","chatPortNumber":2077,"filePortNumber":2088,"friendName":"node"}

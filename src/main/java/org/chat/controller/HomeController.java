@@ -7,7 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -28,18 +27,16 @@ import org.chat.utils.MessageProcessing;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
-public class HomeController implements Initializable {
+public class HomeController {
     @FXML
     private AnchorPane root;
     @FXML
     private VBox chartList;
     @FXML
-    private Button sendBtn;
+    private Button sendMsgBtn, sendFileBtn;
     @FXML
     private Label friendNameLab;
     @FXML
@@ -64,8 +61,8 @@ public class HomeController implements Initializable {
 
     public HomeController() {
 //        用户初始化
-        user = new User(2077, 2088, new File("c:/"));
-//        user = ImportExportProcessing.importUser();
+//        user = new User(2077, 2088, new File("c:/"));
+        user = ImportExportProcessing.importUser();
 
 //        发送文件选择框
         fileChooser = new FileChooser();
@@ -78,11 +75,14 @@ public class HomeController implements Initializable {
         folderChooser.setInitialDirectory(new File("C:/")); // 初始目录
 
 //        好友列表
-//        friendList = FXCollections.observableList(ImportExportProcessing.importFriends());
         friendList = FXCollections.observableArrayList();
-        friendList.add(new Friend("AidanJoe", 2077, 2088, MessageProcessing.getAddress()));
-        friendList.add(new Friend("snake", 2077, 2088, "172.21.14.200"));
-        friendList.add(new Friend("ant", 2077, 2088, MessageProcessing.getAddress()));
+//        friendList.add(new Friend("默认本机", 2077, 2088, MessageProcessing.getAddress()));
+        friendList.addAll(ImportExportProcessing.importFriends());
+
+//        friendList = FXCollections.observableList(ImportExportProcessing.importFriends());
+//        friendList = FXCollections.observableArrayList();
+//        friendList.add(new Friend("snake", 2077, 2088, "172.21.14.200"));
+//        friendList.add(new Friend("ant", 2077, 2088, MessageProcessing.getAddress()));
 
 //        监听信息到来
         user.listenMessage(msg -> {
@@ -132,28 +132,24 @@ public class HomeController implements Initializable {
         settingPane.setVisible(false);
 
         Platform.runLater(() -> {
+            root.getChildren().addAll(addFriendPane, settingPane);
+
 //            监听设置用户端口取消焦点时
             userMsgPortTex.focusedProperty().addListener((ov, oldVal, newVal) -> {
                 if (!newVal) {
 //                    System.out.println("!focus");
-                    System.out.println(userMsgPortTex.getText());
+//                    System.out.println(userMsgPortTex.getText());
                     user.chatPortNumber = Integer.parseInt(userMsgPortTex.getText());
                 }
             });
             userFilePortTex.focusedProperty().addListener((ov, oldVal, newVal) -> {
                 if (!newVal) {
 //                    System.out.println("!focus");
-                    System.out.println(userFilePortTex.getText());
-                    user.filePortNumber = Integer.parseInt(userMsgPortTex.getText());
+//                    System.out.println(userFilePortTex.getText());
+                    user.filePortNumber = Integer.parseInt(userFilePortTex.getText());
                 }
             });
-        });
-    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-//        System.out.println(url);
-        if (friendListView != null) {
             friendListView.setCellFactory((ListView<Friend> l) -> new FriendListCell());
             friendListView.setItems(friendList);
 
@@ -170,7 +166,9 @@ public class HomeController implements Initializable {
                 friendNameLab.setText(selectedFriend.friendName);
 //            可以发送消息
                 msgText.setDisable(false);
-                sendBtn.setDisable(false);
+                sendMsgBtn.setDisable(false);
+                sendFileBtn.setDisable(false);
+
 //            显示聊天记录
                 chartList.getChildren().clear();
                 for (String msg : selectedFriend.exportChattingRecords()) {
@@ -178,15 +176,17 @@ public class HomeController implements Initializable {
                 }
             });
 
-            if (friendListView.getSelectionModel().getSelectedIndex() == -1) {
-                friendListView.getSelectionModel().select(0);
-            }
-        }
+//            System.out.println(friendListView.getSelectionModel().getSelectedIndex());
+//            if (friendListView.getSelectionModel().getSelectedIndex() == -1) {
+//            friendListView.getSelectionModel().select(0);
+//            }
 
+            ipTex.setText(MessageProcessing.getAddress());
+            userMsgPortTex.setText(user.chatPortNumber + "");
+            userFilePortTex.setText(user.filePortNumber + "");
+            pathTex.setText(user.fileSaveFolder.getAbsolutePath());
 
-        if (root != null) {
-            root.getChildren().addAll(addFriendPane, settingPane);
-        }
+        });
     }
 
     private Stage rootStage;
@@ -293,7 +293,7 @@ public class HomeController implements Initializable {
     @FXML
     private void inputMsg(KeyEvent keyEvent) {
 //        System.out.println("get:" + keyEvent.getCode());
-        if (keyEvent.getCode() == KeyCode.ENTER) {
+        if (keyEvent.getCode() == KeyCode.ENTER && !Objects.equals(msgText.getText(), "\n")) {
 //            System.out.println("enter");
             sendMsg();
         }
@@ -304,7 +304,8 @@ public class HomeController implements Initializable {
         File file = fileChooser.showOpenDialog(new Stage());
         if (file != null) {
             // TODO: 2020/12/13 发送文件
-            System.out.println(file.getAbsolutePath());
+//            System.out.println(file.getAbsolutePath());
+            selectedFriend.sendFile(file);
         }
     }
 
@@ -330,6 +331,7 @@ public class HomeController implements Initializable {
         File file = folderChooser.showDialog(new Stage());
         if (file != null) {
             pathTex.setText(file.getAbsolutePath());
+            user.fileSaveFolder = file;
         }
     }
 

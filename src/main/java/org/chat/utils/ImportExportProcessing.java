@@ -57,7 +57,7 @@ public class ImportExportProcessing {
             return friends;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return new ArrayList<>();
         }
     }
 
@@ -99,7 +99,7 @@ public class ImportExportProcessing {
 
             String str = null;
             while ((str = bufferedReader.readLine()) != null) {
-                user=JSON.parseObject(str,User.class);
+                user = JSON.parseObject(str, User.class);
             }
             //close
             inputStream.close();

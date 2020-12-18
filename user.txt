@@ -1,1 +1,1 @@
-{"chatPortNumber":2077,"filePortNumber":2088,"fileSaveFolder":"c:\\"}
+{"chatPortNumber":2077,"filePortNumber":2088,"fileSaveFolder":"saveFile"}

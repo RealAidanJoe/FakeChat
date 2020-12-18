@@ -60,7 +60,7 @@
                      <children>
                         <AnchorPane onMouseDragged="#dragWin" onMousePressed="#pressWin" prefHeight="60.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label fx:id="friendNameLab" layoutX="38.0" layoutY="22.0" text="安大微教务" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
+                              <Label fx:id="friendNameLab" layoutX="38.0" layoutY="22.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -110,7 +110,7 @@
                            </font></TextArea>
                         <HBox alignment="CENTER_RIGHT" prefHeight="35.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button mnemonicParsing="false">
+                              <Button mnemonicParsing="false" visible="false">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -123,7 +123,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button mnemonicParsing="false">
+                              <Button mnemonicParsing="false" visible="false">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -132,7 +132,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#sendFile">
+                              <Button fx:id="sendFileBtn" disable="true" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#sendFile">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -141,7 +141,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button layoutX="46.0" layoutY="14.0" mnemonicParsing="false">
+                              <Button layoutX="46.0" layoutY="14.0" mnemonicParsing="false" visible="false">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -152,7 +152,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <Button fx:id="sendBtn" disable="true" layoutX="460.0" layoutY="138.0" mnemonicParsing="false" onAction="#sendMsg" styleClass="send-btn" text="发送" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="35.0">
+                        <Button fx:id="sendMsgBtn" disable="true" layoutX="460.0" layoutY="138.0" mnemonicParsing="false" onAction="#sendMsg" styleClass="send-btn" text="发送" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="35.0">
                            <font>
                               <Font size="15.0" />
                            </font>

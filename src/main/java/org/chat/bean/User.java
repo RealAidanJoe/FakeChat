@@ -1,5 +1,7 @@
 package org.chat.bean;
 
+import javafx.beans.property.SimpleIntegerProperty;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.*;
@@ -8,11 +10,14 @@ import static java.lang.Thread.sleep;
 
 public class User {
     //    聊天端口号
+//    public int chatPortNumber;
     public int chatPortNumber;
     //    聊天端口号
+//    public int filePortNumber;
     public int filePortNumber;
     //    数据块
     private final byte[] data = new byte[1024];
+    DatagramPacket pack = new DatagramPacket(data, data.length);
     //    文件保存路径
     public File fileSaveFolder;
 
@@ -20,14 +25,17 @@ public class User {
         this.chatPortNumber = chatPortNumber;
         this.filePortNumber = filePortNumber;
         this.fileSaveFolder = fileSaveFolder;
+//        this.chatPortNumber = new SimpleIntegerProperty(chatPortNumber);
+//        this.filePortNumber = new SimpleIntegerProperty(filePortNumber);
     }
 
 
     public void listenMessage(MessageListener messageListener) {
         Thread t = new Thread(() -> {
             try {
-                DatagramPacket pack = new DatagramPacket(data, data.length);
-                DatagramSocket socket = new DatagramSocket(chatPortNumber);
+                DatagramSocket socket;
+                socket = new DatagramSocket(chatPortNumber);
+
                 while (true) {
                     socket.receive(pack);
                     String singleMessage = new String(pack.getData(), 0, pack.getLength());
@@ -44,9 +52,10 @@ public class User {
     public void listenFile(FileListener fileListener) {
         Thread t = new Thread(() -> {
             try {
-                DatagramPacket pack = new DatagramPacket(data, data.length);
+                DatagramSocket socket;
+                socket = new DatagramSocket(filePortNumber);
+
                 while (true) {
-                    DatagramSocket socket = new DatagramSocket(filePortNumber);
                     socket.receive(pack);
                     FileOutputStream fileWrite = null;
                     fileWrite = new FileOutputStream(fileSaveFolder);
