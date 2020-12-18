@@ -5,14 +5,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root fx:id="aliBox" alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="600.0" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label fx:id="msgLab" style="-fx-background-radius: 5;" text="Label">
-         <padding>
-            <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
-         </padding>
-         <font>
-            <Font size="15.0" />
-         </font></Label>
-   </children>
+<fx:root type="javafx.scene.layout.HBox" fx:id="aliBox" alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="600.0"
+         xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label fx:id="msgLab" style="-fx-background-radius: 5;" text="Label">
+            <padding>
+                <Insets bottom="7.0" left="10.0" right="10.0" top="7.0"/>
+            </padding>
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Label>
+    </children>
 </fx:root>

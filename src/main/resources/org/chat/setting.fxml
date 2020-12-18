@@ -1,93 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="349.0" prefWidth="585.0" style="-fx-border-width: 1; -fx-border-color: black;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chat.controller.SettingController">
-   <children>
-      <AnchorPane layoutX="11.0" layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <HBox alignment="TOP_RIGHT" layoutX="466.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Button mnemonicParsing="false">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../img/mini.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button layoutX="174.0" layoutY="10.0" mnemonicParsing="false" styleClass="close-btn">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../img/close.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-            <Label layoutY="10.0" text="设置" textFill="GREY" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <VBox alignment="TOP_CENTER" layoutY="114.0" prefHeight="200.0" prefWidth="150.0" style="-fx-border-width: 0 1 0 0; -fx-border-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0">
-         <children>
-            <Button mnemonicParsing="false" text="账号设置">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Button>
-            <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" text="账号设置">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Button>
-            <Button layoutX="14.0" layoutY="45.0" mnemonicParsing="false" text="账号设置">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Button>
-            <Button layoutX="14.0" layoutY="80.0" mnemonicParsing="false" text="账号设置">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
-      <AnchorPane layoutX="153.0" layoutY="72.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
-         <children>
-            <HBox alignment="CENTER" layoutX="30.0" layoutY="42.0" prefHeight="25.0" prefWidth="384.0" spacing="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Label text="文件保存位置">
-                     <font>
+<fx:root prefHeight="349.0" prefWidth="585.0" styleClass="second-win" stylesheets="@../../css/style.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane layoutX="11.0" layoutY="1.0" onMouseDragged="#dragwin" onMousePressed="#presswin" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label layoutY="10.0" text="设置" textFill="GREY" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <font>
                         <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="pathTex" editable="false" prefHeight="25.0" prefWidth="241.0" text="D:\Documents\FakeChat Files\" />
-               </children>
-            </HBox>
-            <HBox layoutX="112.0" layoutY="92.0" spacing="10.0">
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <VBox alignment="TOP_CENTER" layoutY="114.0" prefHeight="200.0" prefWidth="150.0" style="-fx-border-width: 0 1 0 0; -fx-border-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0">
+            <children>
+            <Button layoutX="39.0" layoutY="10.0" mnemonicParsing="false" text="端口设置">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+                <Button mnemonicParsing="false" text="文件设置">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Button>
+            </children>
+        </VBox>
+        <AnchorPane layoutX="153.0" layoutY="72.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+            <children>
+            <VBox alignment="CENTER" layoutY="42.0" spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#chooseFolder" text="更改">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" text="打开文件夹">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Button>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="384.0" spacing="30.0">
+                     <children>
+                        <Label text="消息端口号">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="userMsgPortTex" prefHeight="25.0" prefWidth="241.0" text="2077" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="40.0" prefHeight="25.0" prefWidth="384.0" spacing="30.0">
+                     <children>
+                        <Label text="文件端口号">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="userFilePortTex" prefHeight="25.0" prefWidth="241.0" text="2088" />
+                     </children>
+                  </HBox>
+                      <HBox alignment="CENTER" prefHeight="25.0" prefWidth="384.0" spacing="30.0">
+                          <children>
+                              <Label text="文件保存位置">
+                                  <font>
+                                      <Font size="17.0" />
+                                  </font>
+                              </Label>
+                              <TextField fx:id="pathTex" editable="false" prefHeight="25.0" prefWidth="241.0" text="D:\Documents\FakeChat Files\" />
+                          </children>
+                      </HBox>
+                      <HBox alignment="CENTER" spacing="10.0">
+                          <children>
+                              <Button mnemonicParsing="false" onAction="#chooseSaveFolder" text="更改">
+                                  <font>
+                                      <Font size="17.0" />
+                                  </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#openFolder" text="打开文件夹">
+                                  <font>
+                                      <Font size="17.0" />
+                                  </font>
+                              </Button>
+                          </children>
+                      </HBox>
                </children>
-            </HBox>
-         </children></AnchorPane>
-   </children>
-</AnchorPane>
+            </VBox>
+            </children>
+        </AnchorPane>
+          <HBox alignment="TOP_RIGHT" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                  <Button mnemonicParsing="false" visible="false">
+                      <graphic>
+                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@../../img/mini.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+                  </Button>
+                  <Button layoutX="174.0" layoutY="10.0" mnemonicParsing="false" onAction="#closewin" styleClass="close-btn">
+                      <graphic>
+                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@../../img/close.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+                  </Button>
+              </children>
+          </HBox>
+    </children>
+</fx:root>

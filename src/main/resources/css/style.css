@@ -55,4 +55,9 @@ user-bar:hover {
     -fx-background-color: #cac8c6;
 }
 
+.second-win {
+    -fx-background-color: #f4f4f4;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
 

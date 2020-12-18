@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="590.0" prefWidth="850.0" styleClass="root" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chat.controller.HomeController">
+<AnchorPane fx:id="root" prefHeight="590.0" prefWidth="850.0" styleClass="root" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chat.controller.HomeController">
    <children>
       <AnchorPane onMouseDragged="#dragWin" onMousePressed="#pressWin" styleClass="control-bar" stylesheets="@../../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>

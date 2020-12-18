@@ -8,13 +8,14 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+import javafx.collections.ObservableList;
 import org.chat.bean.Friend;
 import org.chat.bean.Constant;
 import org.chat.bean.User;
 
 
 public class ImportExportProcessing {
-    public static void exportFriends(ArrayList<Friend> friends) {
+    public static void exportFriends(ObservableList<Friend> friends) {
         try {
             File file = new File(Constant.SAVE_FRIENDS_PATH);
             //如果没有文件就创建
@@ -37,7 +38,7 @@ public class ImportExportProcessing {
             File file = new File(Constant.SAVE_FRIENDS_PATH);
             //如果没有文件就创建
             if (!file.isFile()) {
-                return null;
+                return new ArrayList<>();
             }
             ArrayList<Friend> friends = new ArrayList<>();
             //BufferedReader是可以按行读取文件
@@ -57,7 +58,7 @@ public class ImportExportProcessing {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return new ArrayList<>();
     }
 
     public static void exportUser(User user) {
