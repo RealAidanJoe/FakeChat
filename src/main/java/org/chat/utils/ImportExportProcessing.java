@@ -99,7 +99,16 @@ public class ImportExportProcessing {
 
             String str = null;
             while ((str = bufferedReader.readLine()) != null) {
-                user = JSON.parseObject(str, User.class);
+                try{
+                    user = JSON.parseObject(str, User.class);
+                }catch (Exception e){
+                    File saveFile = new File("saveFile");
+                    //如果没有文件就创建
+                    if (!saveFile.exists()) {
+                        saveFile.mkdir();
+                    }
+                    return new User(2077, 2088, saveFile);
+                }
             }
             //close
             inputStream.close();
