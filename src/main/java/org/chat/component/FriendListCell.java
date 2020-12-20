@@ -57,6 +57,7 @@ public class FriendListCell extends ListCell<Friend> {
 //            聊天记录改变代表有新消息
                 chattingRecords.addListener((ListChangeListener<? super String>) change -> {
 //                    System.out.println(getIndex());
+//                    System.out.println("change");
                     String s;
                     String msg = chattingRecords.get(chattingRecords.size() - 1);
                     if (MessageProcessing.isMyMessage(msg)) {

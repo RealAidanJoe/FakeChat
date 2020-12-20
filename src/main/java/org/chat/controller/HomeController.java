@@ -303,9 +303,9 @@ public class HomeController {
     private void sendFile(ActionEvent event) {
         File file = fileChooser.showOpenDialog(new Stage());
         if (file != null) {
-            // TODO: 2020/12/13 发送文件
 //            System.out.println(file.getAbsolutePath());
             selectedFriend.sendFile(file);
+            chartList.getChildren().add(new Bubble("发送文件:" + file.getName()));
         }
     }
 
