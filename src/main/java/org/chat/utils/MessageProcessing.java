@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class MessageProcessing {
     private static final String COMBINE_SYMBOL = "!@#%&";
+    private static final String FILE_SYMBOL = "@#@#!!";
     public static final int NOT_ON_LIST = -1;
 
     //    信息合并
@@ -47,5 +48,17 @@ public class MessageProcessing {
 
     public static String getFriendMessage(String message) {
         return message.strip().split(COMBINE_SYMBOL)[1];
+    }
+
+    public static String getFileMessage(String fileName) {
+        return "FILE_SYMBOL" + FILE_SYMBOL + fileName;
+    }
+
+    public static boolean isFileMessage(String fileMessage) {
+        return fileMessage.split(FILE_SYMBOL).length != 1;
+    }
+
+    public static String getFileName(String fileMessage) {
+        return fileMessage.split(FILE_SYMBOL)[1];
     }
 }

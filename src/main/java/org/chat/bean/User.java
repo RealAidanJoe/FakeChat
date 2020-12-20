@@ -8,6 +8,8 @@ import java.net.*;
 
 import static java.lang.Thread.sleep;
 
+import org.chat.utils.MessageProcessing;
+
 public class User {
     //    聊天端口号
 //    public int chatPortNumber;
@@ -17,9 +19,10 @@ public class User {
     public int filePortNumber;
     //    数据块
     private final byte[] data = new byte[1024];
-    DatagramPacket pack = new DatagramPacket(data, data.length);
     //    文件保存路径
     public File fileSaveFolder;
+    //    获取上一个文件的文件名称
+    public String fileName;
 
     public User(int chatPortNumber, int filePortNumber, File fileSaveFolder) {
         this.chatPortNumber = chatPortNumber;
@@ -35,10 +38,16 @@ public class User {
             try {
                 DatagramSocket socket;
                 socket = new DatagramSocket(chatPortNumber);
-
+                String fileMsg;
+                DatagramPacket pack = new DatagramPacket(data, data.length);
                 while (true) {
                     socket.receive(pack);
                     String singleMessage = new String(pack.getData(), 0, pack.getLength());
+                    System.out.println(MessageProcessing.getFriendMessage(singleMessage));
+                    System.out.println(singleMessage);
+                    if (MessageProcessing.isFileMessage(fileMsg = MessageProcessing.getFriendMessage(singleMessage)))
+                        fileName = MessageProcessing.getFileName(fileMsg);
+
                     messageListener.getMessage(singleMessage);
                 }
             } catch (Exception e) {
@@ -54,11 +63,13 @@ public class User {
             try {
                 DatagramSocket socket;
                 socket = new DatagramSocket(filePortNumber);
-
+                DatagramPacket pack = new DatagramPacket(data, data.length);
                 while (true) {
                     socket.receive(pack);
                     FileOutputStream fileWrite = null;
-                    fileWrite = new FileOutputStream(fileSaveFolder);
+                    sleep(1000);
+                    System.out.println(fileName);
+                    fileWrite = new FileOutputStream(fileSaveFolder + "/" + fileName);
                     fileWrite.write(pack.getData());
                     fileWrite.close();
                 }
